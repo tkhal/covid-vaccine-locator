@@ -1,0 +1,14 @@
+body {
+  background-color: #f8f8ff;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.scrollable{
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+#covid-stats{
+  visibility: hidden;
+}

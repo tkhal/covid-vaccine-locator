@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="vaccine-locator.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>COVID-19 Vaccine Locator</title>
+  <style>
+    #map{
+      height:500px;
+      width:50%;
+    }
+    #us-info{
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      background-color: #feffd8
+    }
+    #stateInfo{
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      background-color: #feffd8
+    }
+    #stateInfo:hover{
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    #us-info:hover{
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    body{
+      padding-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid bg-secondary text-white text-center">
+    <div class="container">
+      <h1 class="display-4">COVID-19 Vaccine Locator</h1>
+    </div>
+  </div>
+  <div class="container">
+    <h2 id="text-center">Enter Address/Zip Code: </h2>
+    <form id="location-form">
+      <input type="text" id="location-input" class="form-control form-control-lg">
+      <br>
+      <h2>Enter search radius (miles):</h2>
+      <input type="text" id="search-radius" class="form-control form-control-lg">
+      <br>
+      <button type="submit" id="seach" class="btn btn-primary btn-block">Submit</button>
+    </form>
+    <div class="card-block" id="formatted-address"></div>
+    <div class="card-block" id="address-components"></div>
+    <div class="card-block" id="geometry"></div>
+  </div>
+  <h2>Map of Vaccine Locations</h2>
+  <div class="container-fluid" id='vaccine-map'>
+    <div class="row">
+      <div id="map" class="col-sm-6"></div>
+      <div id="cards" class="col-sm-6 scrollable"></div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="covid-stats">
+  <div id="stateInfo" class="col-sm-6">
+    <h1 id="state-name">State:</h1>
+    <h3 id="percent">Population Vaccination percentage:</h3>
+    <h3 id="initiated">Vaccinations Initiated:</h3>
+    <h3 id="completed">Vaccinations Completed:</h3>
+    <h3 id="new_cases">New Cases:</h3>
+    <h3 id="new_deaths">New Deaths:</h3>
+</div>
+<div id="us-info" class="col-sm-6">
+  <h1>United States: </h1>
+  <h3 id="us-percent">Population Vaccination percentage:</h3>
+    <h3 id="us-initiated">Vaccinations Initiated:</h3>
+    <h3 id="us-completed">Vaccinations Completed:</h3>
+    <h3 id="us-new_cases">New Cases:</h3>
+    <h3 id="us-new_deaths">New Deaths:</h3>
+</div>
+<br>
+<br>
+</div>
+  <script src="config.js"></script>
+  <script src="card-info.js"></script>
+  <script src="covid-act-now-api.js"></script>
+  <script src="vaccine-api.js"></script>
+  <script src="maps.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARv3XGy6cc3LrzKS6ai0YPzp8Jlgnmy3g&callback=initMap">
+    </script>
+  <script src="geocode.js"></script>
+
+</body>
+</html>
